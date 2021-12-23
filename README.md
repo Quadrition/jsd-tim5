@@ -1,11 +1,16 @@
-### Opis projekta: 
+## JSD - Tim 5
+Petar Cerović R2 33/2022  
+Aleksandra Jordanović R2 13/2021  
+Tamara Glišić R2 11/2021
 
-Jezik za kreiranje turistickih ponuda, koji treba da omogući brz i efikasan unos ponuda u bazu.
-  Za opis jedne ponude potrebno je uneti lokaciju, tip ponude, smestaj, periode relizacije, smestajne jedinice itd.
-	Jezik je baziran na textX gramatici.
+## Opis projekta: 
+
+Jezik za kreiranje turističkih ponuda, koji treba da omogući brz i efikasan unos ponuda u bazu.  
+Za opis jedne ponude potrebno je uneti lokaciju, tip ponude, smeštaj, periode relizacije, smeštajne jedinice itd.  
+Jezik je baziran na textX gramatici.
 
 
-### Primer:
+## Primer:
 ```
 turisticka_ponuda {
 	id: 1235468,
