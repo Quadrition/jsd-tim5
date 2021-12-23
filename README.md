@@ -6,7 +6,7 @@ Tamara Glišić R2 11/2021
 ## Opis projekta: 
 
 Jezik za kreiranje turističkih ponuda, koji treba da omogući brz i efikasan unos ponuda u bazu.  
-Za opis jedne ponude potrebno je uneti lokaciju, tip ponude, smeštaj, periode relizacije, smeštajne jedinice itd.  
+Za opis jedne ponude potrebno je uneti lokaciju, tip ponude, smeštaj, periode realizacije, smeštajne jedinice itd.  
 Jezik je baziran na textX gramatici.
 
 
