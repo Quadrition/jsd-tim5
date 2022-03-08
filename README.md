@@ -5,86 +5,28 @@ Tamara Glišić R2 11/2021
 
 ## Opis projekta: 
 
-Jezik za kreiranje turističkih ponuda, koji treba da omogući brz i efikasan unos ponuda u bazu.  
-Za opis jedne ponude potrebno je uneti lokaciju, tip ponude, smeštaj, periode realizacije, smeštajne jedinice itd.  
-Jezik je baziran na textX gramatici.
+Jezik za rešavanje linearnih jednačina sa jednom nepoznatom i računanje mediane i srednje vrednosti niza.
+
 
 
 ## Primer:
 ```
-turisticka_ponuda {
-	id: 1235468,
-	lokacija: kopaonik,
-	tip_ponude: zimovanje,
-	smestaj: hotel Pahulja,
-	prevoz: bus,
-	periodi: {
-		period {
-			od: 2022/01/01,
-			do: 2022/01/08,
-		},
-		period {
-			od: 2022/01/08,
-			do: 2022/01/15,
-		},
-	},
-	smestajne_jedinice {
-		smestajna_jedinica {
-			naziv: Ap5,
-			tip: apartman,
-			opis: 'pogled na dvoriste',
-			detalji {
-				spavaca_soba: true,
-				dnevni_boravak: true,
-				kapacitet: 4,
-				kuhinja: true,
-				terasa: false,
-				dozvoljeno_pusenje: false,
-				tv: true,
-				mini_bar: true,
-				ac: false,
-			},
-		},
-		smestajna_jedinica {
-			naziv: Ap4,
-			tip: apartman,
-			opis: 'pogled na ski stazu',
-			detalji {
-				spavaca_soba: true,
-				dnevni_boravak: true,
-				kapacitet: 4,
-				kuhinja: true,
-				terasa: false,
-				dozvoljeno_pusenje: false,
-				tv: true,
-				mini_bar: true,
-				ac: false,
-			},
-		},
-		smestajna_jedinica {
-			naziv: S1,
-			tip: soba,
-			opis: 'pogled u zgradu',
-			detalji {
-				kapacitet: 4,
-				tv: true,
-				mini_bar: true,
-				ac: false,
-				dozvoljeno_pusenje: false,
-			},
-		},
-		smestajna_jedinica {
-			naziv: S2,
-			tip: soba,
-			opis: 'pogled na sumu',
-			detalji {
-				kapacitet: 4,
-				tv: true,
-				mini_bar: true,
-				ac: false,
-				dozvoljeno_pusenje: false,
-			},
-		},
-	}
-}
+I - Linearna jednacina sa jednom nepoznatom
+	pr1. 2x+5 = 4x+9
+	pr2. -2x+5 = 4x+9
+	pr3. 5+(-2x) = 4x+9
+	pr4. -5+2x = 4x+9
+	pr5. 2x+(-5) = 4x+9
+	pr6.−5x+3=−12
+	pr7. 2x+5 = -4x+9
+		.
+		.
+		.
+
+II - Mediana i srednja vrednost niza
+	pr1. 5,2,3,8,10,20
+	pr2. -8,6,4,7,5,3
+	pr3. 0.1,5,4,2.003,6,5,1.0001 
+
 ```
+
