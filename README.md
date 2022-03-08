@@ -5,7 +5,8 @@ Tamara Glišić R2 11/2021
 
 ## Opis projekta: 
 
-Jezik za rešavanje linearnih jednačina sa jednom nepoznatom i računanje mediane i srednje vrednosti niza.
+Jezik za rešavanje linearnih jednačina sa jednom nepoznatom i računanje mediane i srednje vrednosti niza.  
+Korisnik unosi linearnu jednačinu ili niz i program mu prikazuje rešenje jednačine, odnosno medianu i srednju vrednost niza.
 
 
 
