@@ -11,7 +11,7 @@ Jezik za rešavanje linearnih jednačina sa jednom nepoznatom i računanje media
 
 ## Primer:
 ```
-I - Linearna jednacina sa jednom nepoznatom
+I - Linearna jednačina sa jednom nepoznatom
 	pr1. 2x+5 = 4x+9
 	pr2. -2x+5 = 4x+9
 	pr3. 5+(-2x) = 4x+9
