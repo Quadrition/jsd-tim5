@@ -12,7 +12,7 @@ Jezik za beleženje poena na odbojkaškim  utakmicama nakon čega se dobija izge
 - najduža razmena lopti
 - prosečna dužina razmenjenih lopti...
 
-```
+
 ## Primer unosa:
 ```
 begin
