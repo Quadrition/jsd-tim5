@@ -1,9 +1,11 @@
 Program:
 	'begin'
+        team_a=STRING
+        team_b=STRING
 		sets+=Set
 	'end'
 ;
-Player: Team Num
+Player: team=Team num=Num
 ;
 Num: /\d{1,2}/
 ;
@@ -20,7 +22,7 @@ Set: 'set' set_num=INT '{' points+=Point[','] '}'
 Point: 'team' team=Team serve=Serve '.' assists*=Assist['.']
 ;
 
-Serve: 'serve' serve_player=Num ('from' from_zone=Zone 'to' to_zone=Zone)? (EndOfPoint)?
+Serve: 'serve' serve_player=Num ('from' from_zone=Zone 'to' to_zone=Zone)? end_of_point?=EndOfPoint
 ;
 Assist: (player=Player action=Action ('from' from_zone=Zone 'to' to_zone=Zone)?)*
 ;
