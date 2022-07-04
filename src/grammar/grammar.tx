@@ -1,0 +1,26 @@
+Program:
+	'begin'
+		sets+=Set
+	'end'
+;
+Player: Team Num
+;
+Num: /\d{1,2}/
+;
+Action: 'receive' | 'pass' | 'block' | 'over'
+;
+Zone: '1' | '2' | '3' | '4' | '5' | '6'
+;
+EndOfPoint: 'ace' | 'out' | 'net'
+;
+Team: 'A' | 'B'
+;
+Set: 'set' set_num=INT '{' points+=Point[','] '}'
+;
+Point: 'team' team=Team serve=Serve '.' assists*=Assist['.']
+;
+
+Serve: 'serve' serve_player=Num ('from' from_zone=Zone 'to' to_zone=Zone)? (EndOfPoint)?
+;
+Assist: (player=Player action=Action ('from' from_zone=Zone 'to' to_zone=Zone)?)*
+;
