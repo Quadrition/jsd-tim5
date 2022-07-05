@@ -1,0 +1,10 @@
+begin
+    teamA: 'ZOK Novi Sad'
+    teamB: 'Radnicki' 
+  set 1 {
+  	team A serve 10 from 6 to 6 . B6 receive B88 over from 4 to 3 . A25 receive out,
+	team B serve 23 from 6 to 1 . A6 receive A10 pass A4 over from 2 to 3 . B25 receive net,
+	team A serve 12 from 5 to 3 ace,
+    team A serve 10 from 6 to 6 . B6 receive B88 over from 4 to 3 . A25 receive out
+    }
+end
