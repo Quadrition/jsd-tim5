@@ -23,11 +23,5 @@ def create_model(model):
     return match
 
 
-if __name__ == '__main__':
-    file_name = join('..', sys.argv[1])
-    model = interpreter(file_name)
-    match = create_model(model)
-    match.sets[0].points[2] = model.sets[0].points[2]
-    print(match.sets[0].team_a_points(), 'TEAM A')
-    print(match.sets[0].team_b_points(), 'TEAM B')
+
     
