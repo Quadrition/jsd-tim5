@@ -24,5 +24,7 @@ Point: 'team' team=Team serve=Serve  assists*=Assist
 
 Serve: 'serve' serve_player=Num ('from' from_zone=Zone 'to' to_zone=Zone)? (end_of_point=EndOfPoint)?
 ;
-Assist: '.'(player=Player action=Action ('from' from_zone=Zone 'to' to_zone=Zone)?)* (end_of_point=EndOfPoint)?
+Assist: '.' actions*=SingleAction (end_of_point=EndOfPoint)?
+;
+SingleAction: player=Player action=Action ('from' from_zone=Zone 'to' to_zone=Zone)? 
 ;

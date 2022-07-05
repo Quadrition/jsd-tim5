@@ -12,7 +12,7 @@ class Point:
         
         if len(self.assists) != 0:
             assist = self.assists[-1]
-            if assist.player[0].team == 'A':
+            if assist.actions[0].player.team == 'A':
                 return 'B'
             else:
                 return 'A'
