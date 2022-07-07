@@ -127,3 +127,40 @@ def prepare_tabulate_serve_data(match, team):
     } 
     return table_data
 
+def prepare_table_sets_data(match):
+    header_sets = ['','longest rally','average rally']
+    data_sets = [
+        ['Set 1', longest_rally_for_set(match.sets[0]), average_rally_for_set(match.sets[0])], 
+        ['Set 2', longest_rally_for_set(match.sets[1]), average_rally_for_set(match.sets[1])] ,
+        ['Set 3', longest_rally_for_set(match.sets[2]), average_rally_for_set(match.sets[2])]
+        ]
+    sets_data = {
+        'header_sets':header_sets,
+        'data_sets':data_sets
+    }
+
+def get_team_table_data(match, team):
+    #Team table data per set 
+    table_sets_data = prepare_table_sets_data_per_team(match, team)
+    header_set = table_sets_data['header'] 
+    data_set = table_sets_data['data']
+
+    #Team table data (serve to zone per set)
+    table_serve_data = prepare_tabulate_serve_data(match, team)
+    header_serve = table_serve_data['header']
+    data_serve = table_serve_data['data']
+
+    #Team table data (attack to zone per set)
+    table_attacks_data = prepare_tabulate_attacks_data(match, 'A')
+    header_attack = table_attacks_data['header']
+    data_attack = table_attacks_data['data']
+
+    team_table_data = {
+        'header_set':header_set,
+        'data_set': data_set,
+        'header_serve': header_serve,
+        'data_serve': data_serve,
+        'header_attack':header_attack,
+        'data_attack':data_attack
+    }
+    return team_table_data
