@@ -225,7 +225,7 @@ def generate_csv(match, output_file):
 
 
 
-def convert_csv_to_pdf(output_file):#OVOOO
+def convert_csv_to_pdf(output_file):
     csv_file = output_file+'.csv'
     pdf_file=output_file+'.pdf'
     with open(csv_file, newline='') as f:
@@ -251,3 +251,18 @@ def convert_csv_to_pdf(output_file):#OVOOO
         pdf.set_font('Times','',10.0) 
         pdf.cell(page_width, 0.0, '- end of report -', align='C')
         pdf.output(pdf_file, 'F')
+
+
+def generate_report(source_file, output_file):
+    model = interpreter(source_file)
+    match = create_model(model)
+    generate_csv(match, output_file)
+    convert_csv_to_pdf(output_file)
+
+
+if __name__ == '__main__':
+    print('Please wait...')
+
+    source_file = join('..', sys.argv[1])
+    output_file = sys.argv[2]
+    generate_report(source_file,output_file)
