@@ -28,7 +28,7 @@ def average_rally_for_set(set):
     for point in set.points:
         sum += point.num_of_assists()
         
-    return sum/len(set.points)
+    return round(sum/len(set.points),2)
 
 def serve_to_zone_by_set(set, team):
     #       1  2  3  4  5  6  zona
