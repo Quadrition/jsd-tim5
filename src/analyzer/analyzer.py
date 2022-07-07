@@ -101,9 +101,6 @@ def team_wins_set(set):
     else:
         return 'B'
 
-def reception_err_by_set(set, team):
-
-    pass
 
 def final_set_wins_by_team(match, team):
     count = 0
@@ -112,13 +109,5 @@ def final_set_wins_by_team(match, team):
             count += 1
     return count
 
-if __name__ == '__main__':
-    file_name = join('..', sys.argv[1])
-    model = interpreter(file_name)
-    match = create_model(model)
-   # print(get_points_by_set(match.sets[0], 'A'), 'TEAM A')
-   # print(longest_rally_for_set(match.sets[0]), ' longest rally')
-   # print(average_rally_for_set(match.sets[0]), ' average rallys')
-   # for z in attack_to_zone_by_set_percent(match.sets[0], 'A'):
-   #     print(z)
+
     
