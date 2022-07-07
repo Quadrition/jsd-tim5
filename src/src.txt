@@ -6,6 +6,24 @@ begin
 	team B serve 23 from 6 to 1 . A6 receive A10 pass A4 over from 2 to 5 . B25 receive net,
 	team A serve 12 from 5 to 3 ace,
     team A serve 10 from 6 to 6 . B6 receive B88 over from 4 to 3 . A25 receive out,
+    team B serve 23 from 6 to 3 . A6 receive A10 pass A4 over from 2 to 5 .B6 receive B88 over from 4 to 3 . A6 receive A10 pass A4 over from 2 to 3 .  B6 receive B88 over from 4 to 3 . A25 receive out,
+    team A serve 23 out,
+    team A serve 23 from 6 to 6 ace
+    }
+    set 2 {
+  	team A serve 10 from 6 to 1 . B6 receive B88 over from 4 to 3 . A25 receive out,
+	team B serve 23 from 6 to 1 . A6 receive A10 pass A4 over from 2 to 5 . B25 receive net,
+	team A serve 12 from 5 to 3 ace,
+    team A serve 10 from 6 to 6 . B6 receive B88 over from 4 to 3 . A25 receive out,
+    team B serve 23 from 6 to 5 . A6 receive A10 pass A4 over from 2 to 5 .B6 receive B88 over from 4 to 3 . A6 receive A10 pass A4 over from 2 to 3 .  B6 receive B88 over from 4 to 3 . A25 receive out,
+    team A serve 23 out,
+    team A serve 23 from 6 to 6 ace
+    }
+    set 3 {
+  	team A serve 10 from 6 to 5 . B6 receive B88 over from 4 to 3 . A25 receive out,
+	team B serve 23 from 6 to 1 . A6 receive A10 pass A4 over from 2 to 5 . B25 receive net,
+	team A serve 12 from 5 to 3 ace,
+    team A serve 10 from 6 to 6 . B6 receive B88 over from 4 to 3 . A25 receive out,
     team B serve 23 from 6 to 1 . A6 receive A10 pass A4 over from 2 to 5 .B6 receive B88 over from 4 to 3 . A6 receive A10 pass A4 over from 2 to 3 .  B6 receive B88 over from 4 to 3 . A25 receive out,
     team A serve 23 out,
     team A serve 23 from 6 to 6 ace

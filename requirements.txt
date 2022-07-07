@@ -1,3 +1,4 @@
 pdfkit==1.0.0
 textX==2.3.0
 textX-dev==0.1.5
+fpdf==1.7.2
