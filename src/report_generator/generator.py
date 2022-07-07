@@ -5,7 +5,7 @@ sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from analyzer.analyzer import *
 
 
-def prepare_set_data(set, team):
+def prepare_set_data_per_team(set, team):
     points = get_points_by_set(set, team)
     serve_err = serve_err_by_set(set, team)
     serve_ace =  serve_ace_by_set(set, team)
@@ -17,15 +17,15 @@ def prepare_set_data(set, team):
     return data
 
 
-def prepare_table_sets_data(match, team):
+def prepare_table_sets_data_per_team(match, team):
     if team == 'A':
         team_name = match.team_a
     else:
         team_name = match.team_b
 
-    set1_data = prepare_set_data(match.sets[0], team)
-    set2_data = prepare_set_data(match.sets[1], team)
-    set3_data = prepare_set_data(match.sets[2], team)
+    set1_data = prepare_set_data_per_team(match.sets[0], team)
+    set2_data = prepare_set_data_per_team(match.sets[1], team)
+    set3_data = prepare_set_data_per_team(match.sets[2], team)
 
     header = ['Team '+ team_name , 'points', 'serve error','serve ace']
     data = [
@@ -80,6 +80,50 @@ def prepare_tabulate_attacks_data(match,team):
     table_data = {
         'header':header_attack,
         'data':data_attack
+    } 
+    return table_data
+
+def prepare_serve_data(set, team):
+    serves_to_zone_by_set = serve_to_zone_by_set(set, team)
+    zone1 = serves_to_zone_by_set[0] 
+    zone2 = serves_to_zone_by_set[1] 
+    zone3 = serves_to_zone_by_set[2] 
+    zone4 = serves_to_zone_by_set[3] 
+    zone5 = serves_to_zone_by_set[4] 
+    zone6 = serves_to_zone_by_set[5] 
+    serves = {
+        'zone1': zone1,
+        'zone2': zone2,
+        'zone3': zone3,
+        'zone4': zone4,
+        'zone5': zone5,
+        'zone6': zone6,
+    }
+    return serves
+
+def prepare_tabulate_serve_data(match, team):
+    if team == 'A':
+        team_name = match.team_a
+    else:
+        team_name = match.team_b
+
+    set1_serve = prepare_serve_data(match.sets[0], team)
+    set2_serve = prepare_serve_data(match.sets[1], team)
+    set3_serve = prepare_serve_data(match.sets[2], team)
+
+    header_serve = ['Team '+ team_name , 'Set1', 'Set 2','Set 3']
+    data_serve = [
+    ['Serve to zone 1', set1_serve['zone1'], set2_serve['zone1'],set3_serve['zone1']],
+    ['Serve to zone 2', set1_serve['zone2'], set2_serve['zone2'],set3_serve['zone2']],
+    ['Serve to zone 3', set1_serve['zone3'], set2_serve['zone3'],set3_serve['zone3']],
+    ['Serve to zone 4', set1_serve['zone4'], set2_serve['zone4'],set3_serve['zone4']],
+    ['Serve to zone 5', set1_serve['zone5'], set2_serve['zone5'],set3_serve['zone5']],
+    ['Serve to zone 6', set1_serve['zone6'], set2_serve['zone6'],set3_serve['zone6']]
+
+]
+    table_data = {
+        'header':header_serve,
+        'data':data_serve
     } 
     return table_data
 
