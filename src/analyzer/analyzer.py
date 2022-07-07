@@ -105,6 +105,13 @@ def reception_err_by_set(set, team):
 
     pass
 
+def final_set_wins_by_team(match, team):
+    count = 0
+    for set in match.sets:
+        if team_wins_set(set) == team:
+            count += 1
+    return count
+
 if __name__ == '__main__':
     file_name = join('..', sys.argv[1])
     model = interpreter(file_name)
