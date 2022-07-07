@@ -3,6 +3,8 @@ import sys
 import os
 sys.path.insert(1, os.path.join(sys.path[0], '..'))
 from analyzer.analyzer import *
+import csv
+from fpdf import FPDF
 
 
 def prepare_set_data_per_team(set, team):
@@ -138,6 +140,7 @@ def prepare_table_sets_data(match):
         'header_sets':header_sets,
         'data_sets':data_sets
     }
+    return sets_data
 
 def get_team_table_data(match, team):
     #Team table data per set 
@@ -151,7 +154,7 @@ def get_team_table_data(match, team):
     data_serve = table_serve_data['data']
 
     #Team table data (attack to zone per set)
-    table_attacks_data = prepare_tabulate_attacks_data(match, 'A')
+    table_attacks_data = prepare_tabulate_attacks_data(match, team)
     header_attack = table_attacks_data['header']
     data_attack = table_attacks_data['data']
 
@@ -164,3 +167,87 @@ def get_team_table_data(match, team):
         'data_attack':data_attack
     }
     return team_table_data
+
+def generate_csv(match, output_file):
+    file = output_file+'.csv'
+    # general table data
+    header = ['Total score']
+    data = [[match.team_a, final_set_wins_by_team(match, 'A')], 
+        [match.team_b, final_set_wins_by_team(match, 'B')] 
+        ]
+
+    team_a_table_data = get_team_table_data(match, 'A')
+    team_b_table_data = get_team_table_data(match, 'B')
+    sets_data = prepare_table_sets_data(match)
+    
+    with open(file, 'w', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
+
+        # write the header
+        writer.writerow(header)       
+
+        # write multiple rows
+        writer.writerows(data)
+        writer.writerows('\n')
+        writer.writerows('\n')
+
+    # - - - - write Team A data
+        writer.writerow(team_a_table_data['header_set'])
+        writer.writerows(team_a_table_data['data_set'])
+        writer.writerows('\n')
+
+        writer.writerow(team_a_table_data['header_serve'])
+        writer.writerows(team_a_table_data['data_serve'])
+        writer.writerows('\n')
+
+        writer.writerow(team_a_table_data['header_attack'])
+        writer.writerows(team_a_table_data['data_attack'])
+        writer.writerows('\n')
+        writer.writerows('\n')
+
+    # - - - - write Team B data
+        writer.writerow(team_b_table_data['header_set'])
+        writer.writerows(team_b_table_data['data_set'])
+        writer.writerows('\n')
+
+        writer.writerow(team_b_table_data['header_serve'])
+        writer.writerows(team_b_table_data['data_serve'])
+        writer.writerows('\n')
+
+        writer.writerow(team_b_table_data['header_attack'])
+        writer.writerows(team_b_table_data['data_attack'])
+        writer.writerows('\n')
+        writer.writerows('\n')
+
+    # - - - - write general set's data
+        writer.writerow(sets_data['header_sets'])
+        writer.writerows(sets_data['data_sets'])
+
+
+
+def convert_csv_to_pdf(output_file):#OVOOO
+    csv_file = output_file+'.csv'
+    pdf_file=output_file+'.pdf'
+    with open(csv_file, newline='') as f:
+        reader = csv.reader(f)
+        
+        pdf = FPDF()
+        pdf.add_page()
+        page_width = pdf.w - 2 * pdf.l_margin            
+        pdf.set_font('Times','B',14.0) 
+        pdf.cell(page_width, 0.0, 'Match report', align='C')
+        pdf.ln(10)
+        pdf.set_font('Courier', '', 12)        
+        col_width = page_width/4        
+        pdf.ln(10)        
+        th = pdf.font_size
+        
+        for row in reader:
+            for r in range(len(row)):
+                if row[r] != '\n':
+                    pdf.cell(col_width, th, row[r], border=1)
+            pdf.ln(th)
+        pdf.ln(10)
+        pdf.set_font('Times','',10.0) 
+        pdf.cell(page_width, 0.0, '- end of report -', align='C')
+        pdf.output(pdf_file, 'F')
