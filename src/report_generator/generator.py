@@ -24,17 +24,13 @@ def prepare_table_sets_data_per_team(match, team):
         team_name = match.team_a
     else:
         team_name = match.team_b
-
-    set1_data = prepare_set_data_per_team(match.sets[0], team)
-    set2_data = prepare_set_data_per_team(match.sets[1], team)
-    set3_data = prepare_set_data_per_team(match.sets[2], team)
-
+    
+    data = []
     header = ['Team '+ team_name , 'points', 'serve error','serve ace']
-    data = [
-    ['Set 1', set1_data['points'], set1_data['serve_err'],set1_data['serve_ace']],
-    ['Set 2', set2_data['points'], set2_data['serve_err'],set2_data['serve_ace']],
-    ['Set 3', set3_data['points'], set3_data['serve_err'],set3_data['serve_ace']]
-]
+    for i in range(len(match.sets)):
+        num = i+1
+        set_data = prepare_set_data_per_team(match.sets[i], team)
+        data.append(['Set '+str(num), set_data['points'], set_data['serve_err'],set_data['serve_ace']])
     table_data = {
         'header':header,
         'data':data
@@ -66,19 +62,14 @@ def prepare_tabulate_attacks_data(match,team):
     else:
         team_name = match.team_b
 
-    set1_attacks = prepare_attacks_data(match.sets[0], team)
-    set2_attacks = prepare_attacks_data(match.sets[1], team)
-    set3_attacks = prepare_attacks_data(match.sets[2], team)
-
+    data_attack = []
     header_attack = ['Team '+ team_name , 'Set1', 'Set 2','Set 3']
-    data_attack = [
-    ['Attack to zone 1', set1_attacks['zone1'], set2_attacks['zone1'], set3_attacks['zone1']],
-    ['Attack to zone 2', set1_attacks['zone2'], set2_attacks['zone2'], set3_attacks['zone2']],
-    ['Attack to zone 3', set1_attacks['zone3'], set2_attacks['zone3'], set3_attacks['zone3']],
-    ['Attack to zone 4', set1_attacks['zone4'], set2_attacks['zone4'], set3_attacks['zone4']],
-    ['Attack to zone 5', set1_attacks['zone5'], set2_attacks['zone5'], set3_attacks['zone5']],
-    ['Attack to zone 6', set1_attacks['zone6'], set2_attacks['zone6'], set3_attacks['zone6']]
-]
+    for zone in [1,2,3,4,5,6]:
+        data_attack.append(['Attack to zone '+str(zone)])
+        for i in range(len(match.sets)):
+            set_attacks = prepare_attacks_data(match.sets[i], team)
+            data_attack[zone-1].append(set_attacks['zone'+str(zone)])
+
     table_data = {
         'header':header_attack,
         'data':data_attack
@@ -109,20 +100,14 @@ def prepare_tabulate_serve_data(match, team):
     else:
         team_name = match.team_b
 
-    set1_serve = prepare_serve_data(match.sets[0], team)
-    set2_serve = prepare_serve_data(match.sets[1], team)
-    set3_serve = prepare_serve_data(match.sets[2], team)
-
+    data_serve = []
     header_serve = ['Team '+ team_name , 'Set1', 'Set 2','Set 3']
-    data_serve = [
-    ['Serve to zone 1', set1_serve['zone1'], set2_serve['zone1'],set3_serve['zone1']],
-    ['Serve to zone 2', set1_serve['zone2'], set2_serve['zone2'],set3_serve['zone2']],
-    ['Serve to zone 3', set1_serve['zone3'], set2_serve['zone3'],set3_serve['zone3']],
-    ['Serve to zone 4', set1_serve['zone4'], set2_serve['zone4'],set3_serve['zone4']],
-    ['Serve to zone 5', set1_serve['zone5'], set2_serve['zone5'],set3_serve['zone5']],
-    ['Serve to zone 6', set1_serve['zone6'], set2_serve['zone6'],set3_serve['zone6']]
+    for zone in [1,2,3,4,5,6]:
+        data_serve.append(['Attack to zone '+str(zone)])
+        for i in range(len(match.sets)):
+            set_attacks = prepare_serve_data(match.sets[i], team)
+            data_serve[zone-1].append(set_attacks['zone'+str(zone)])
 
-]
     table_data = {
         'header':header_serve,
         'data':data_serve
@@ -131,11 +116,11 @@ def prepare_tabulate_serve_data(match, team):
 
 def prepare_table_sets_data(match):
     header_sets = ['','longest rally','average rally']
-    data_sets = [
-        ['Set 1', longest_rally_for_set(match.sets[0]), average_rally_for_set(match.sets[0])], 
-        ['Set 2', longest_rally_for_set(match.sets[1]), average_rally_for_set(match.sets[1])] ,
-        ['Set 3', longest_rally_for_set(match.sets[2]), average_rally_for_set(match.sets[2])]
-        ]
+    data_sets = []
+    for i in range(len(match.sets)):
+        set_num = i+1
+        data_sets.append(['Set '+str(set_num), longest_rally_for_set(match.sets[i]), average_rally_for_set(match.sets[i])])
+
     sets_data = {
         'header_sets':header_sets,
         'data_sets':data_sets
@@ -266,3 +251,4 @@ if __name__ == '__main__':
     source_file = join('..', sys.argv[1])
     output_file = sys.argv[2]
     generate_report(source_file,output_file)
+    print('Report generated.')
