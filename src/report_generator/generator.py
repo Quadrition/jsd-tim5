@@ -1,8 +1,7 @@
 
-import sys
-import os
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from analyzer.analyzer import *
+
+from src.analyzer.analyzer import *
+from src.interpreter.interpreter import *
 import csv
 from fpdf import FPDF
 
@@ -238,17 +237,18 @@ def convert_csv_to_pdf(output_file):
         pdf.output(pdf_file, 'F')
 
 
-def generate_report(source_file, output_file):
-    model = interpreter(source_file)
-    match = create_model(model)
+def generate_report(output_file, match):
+    #model = interpreter(source_file)
+    #match = create_model(model)
     generate_csv(match, output_file)
     convert_csv_to_pdf(output_file)
 
 
-if __name__ == '__main__':
+def generate(model):
     print('Please wait...')
-
-    source_file = join('..', sys.argv[1])
-    output_file = sys.argv[2]
-    generate_report(source_file,output_file)
+    match = create_model(model)
+    #source_file = join('..', sys.argv[1])
+    #output_file = sys.argv[2]
+    output_file = "report_example"
+    generate_report(output_file, match)
     print('Report generated.')

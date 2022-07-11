@@ -1,14 +1,3 @@
-import sys
-import os
-from warnings import catch_warnings
-from textx import metamodel_from_file
-from os.path import join, dirname, exists
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
-from model.match import Match
-from model.point import Point
-from model.set import Set
-from interpreter.interpreter import create_model, interpreter
-
 def get_points_by_set(set, team):
     if team == 'A':
         return set.team_a_points()
